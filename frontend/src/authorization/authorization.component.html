@@ -1,0 +1,19 @@
+<body>
+  <div class="authorization-container">
+    <div class="authorization-title">
+      <div style="margin-top: 2.5rem;">
+        <img src="images/logo_sellio.png">
+        <h2>Autoryzacja</h2>
+      </div>
+      <span>{{message}}</span>
+    </div>
+    <div class="authorization-inputs">
+      <input [(ngModel)]="username" type="text" placeholder="Nazwa użytkownika">
+      <input [(ngModel)]="password" type="password" placeholder="Hasło">
+    </div>
+    <div class="authorization-buttons">
+      <button (click)="loginButtonHandler()">Zaloguj</button>
+      <button (click)="registerButtonHandler()">Zarejestruj</button>
+    </div>
+  </div>
+</body>

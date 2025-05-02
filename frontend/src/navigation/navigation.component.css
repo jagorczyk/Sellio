@@ -1,0 +1,34 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #1e1e1e;
+}
+
+.navbar-button {
+  background-color: #1e1e1e;
+  border: 3px;
+  color: white;
+  text-decoration: none;
+  height: 20px;
+  width: 200px;
+  margin-top: 15px;
+  font-family: "Roboto Medium";
+  opacity: 1;
+  transition: 0.3s;
+  font-size: 18px;
+}
+
+.navbar-button-login {
+  text-align: center;
+}
+
+.fa {
+  padding: 5px;
+}
+
+.navbar-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
