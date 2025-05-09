@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="items-container">
+    @for (item of items; track item.id) {
+      <div class="items-item">
+        <div class="items-item-informations">
+          <a [routerLink]="['/item', item.name]"><img src="/images/{{item.img_url}}.png"></a>
+          <h2>{{item.name}}</h2>
+        </div>
+        <div class="items-item-button">
+          <span class="items-item-button-price">59.99zł</span>
+          <button><span>Dodaj do koszyka</span></button>
+          <span class="items-item-button-stock">W magazynie</span>
+          <div class="items-item-button-rating">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="items-item-button-rating-rate">(0 opinii)</span>
+          </div>
+        </div>
+      </div>
+    }
+</div>

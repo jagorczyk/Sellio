@@ -20,4 +20,9 @@ public class ItemServiceImplementation implements ItemService {
     public ItemClass save(ItemClass itemClass) {
         return itemRepository.save(itemClass);
     }
+
+    @Override
+    public ItemClass findByName(String name) {
+        return itemRepository.findByName(name);
+    }
 }

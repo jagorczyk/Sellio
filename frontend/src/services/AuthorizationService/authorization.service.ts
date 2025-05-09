@@ -19,6 +19,7 @@ export class AuthorizationService {
   }
 
   register(username: string, password: string): Observable<any> {
+    console.log("Dane:", username, password);
     return this.http.post(
       `${this.api}/register`,
       {username, password}

@@ -1,19 +1,59 @@
 <body>
+<!--  <div class="authorization-container">-->
+<!--    <div class="authorization-title">-->
+<!--      <div style="margin-top: 2.5rem;">-->
+<!--        <img src="images/logo.png">-->
+<!--        <h2>Autoryzacja</h2>-->
+<!--      </div>-->
+<!--      <span>{{message}}</span>-->
+<!--    </div>-->
+<!--    <div class="authorization-inputs">-->
+<!--      <input [(ngModel)]="username" type="text" placeholder="Nazwa użytkownika">-->
+<!--      <input [(ngModel)]="password" type="password" placeholder="Hasło">-->
+<!--    </div>-->
+<!--    <div class="authorization-buttons">-->
+<!--      <button (click)="loginButtonHandler()">Zaloguj</button>-->
+<!--      <button (click)="registerButtonHandler()">Zarejestruj</button>-->
+<!--    </div>-->
+<!--  </div>-->
   <div class="authorization-container">
     <div class="authorization-title">
-      <div style="margin-top: 2.5rem;">
-        <img src="images/logo_sellio.png">
-        <h2>Autoryzacja</h2>
-      </div>
-      <span>{{message}}</span>
+      <img src="/images/logo.png" width="360" height="64">
+      @if (isLogging) {
+        <h2>Zaloguj się do swojego konta</h2>
+      } @else {
+        <h2>Tworzenie konta</h2>
+      }
     </div>
-    <div class="authorization-inputs">
-      <input [(ngModel)]="username" type="text" placeholder="Nazwa użytkownika">
-      <input [(ngModel)]="password" type="password" placeholder="Hasło">
+    <div class="authorization-inputs-container">
+      <div class="authorization-inputs">
+        <input [(ngModel)]="username" type="text" placeholder="Adres e-mail">
+        <input [(ngModel)]="password" type="password" placeholder="Hasło">
+        @if (!isLogging) {
+          <input [(ngModel)]="repeat_password" type="password" placeholder="Powtórz hasło">
+        }
+      </div>
+      <div class="authorization-inputs-checkbox">
+        <input type="checkbox">
+        <label>Zapamiętaj mnie</label>
+      </div>
     </div>
     <div class="authorization-buttons">
-      <button (click)="loginButtonHandler()">Zaloguj</button>
-      <button (click)="registerButtonHandler()">Zarejestruj</button>
+      @if (isLogging) {
+        <button (click)="loginButtonHandler()">Zaloguj</button>
+      } @else {
+        <button (click)="registerButtonHandler()">Zarejestruj</button>
+      })
+      <div class="authorization-buttons-register">
+        @if (isLogging) {
+          <span>Nie masz konta? <a (click)="changeToLoginOrRegister()">Zarejestruj się</a></span>
+        } @else {
+          <span>Masz już konto? <a (click)="changeToLoginOrRegister()">Zaloguj się</a></span>
+        }
+      </div>
+      <div class="authorization-buttons-forget">
+        <a routerLink="/register">Przypomnij hasło</a>
+      </div>
     </div>
   </div>
 </body>

@@ -15,9 +15,10 @@ import {Router} from '@angular/router';
 
 export class AuthorizationComponent {
 
+  isLogging: boolean = true; // is logging or is registering
   username: string = ""
   password: string = ""
-  message: string = ""
+  repeat_password: string = ""
 
   constructor(private AuthService: AuthorizationService, private router: Router) {}
 
@@ -25,11 +26,7 @@ export class AuthorizationComponent {
     this.AuthService.login(this.username, this.password).subscribe({
       next: data => {
         this.AuthService.saveToken(data.token);
-        this.router.navigate(["/navigation"]);
-      },
-      error: data => {
-        this.message = data.error
-        setTimeout(() => { this.message = "" }, 5 * 1000);
+        this.router.navigate(["/"]);
       }
     })
   }
@@ -38,12 +35,12 @@ export class AuthorizationComponent {
     this.AuthService.register(this.username, this.password).subscribe({
       next: data => {
         this.loginButtonHandler()
-      },
-      error: data => {
-        this.message = data.error
-        setTimeout(() => { this.message = "" }, 5 * 1000);
       }
     })
+  }
+
+  changeToLoginOrRegister() {
+    this.isLogging = !this.isLogging;
   }
 
 }

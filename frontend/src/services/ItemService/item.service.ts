@@ -16,4 +16,10 @@ export class ItemService {
       `${this.api}`
     )
   }
+
+  getItemByName(name: string | null): Observable<any> {
+    return this.http.get(
+      `${this.api}/info?name=${name}`
+    )
+  }
 }

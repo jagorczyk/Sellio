@@ -28,10 +28,20 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public UserClass register(@RequestBody UserClass user) throws BadCredentialsException {
+        if (user.getUsername() == null || user.getUsername().trim().isEmpty()) {
+            throw new IllegalArgumentException("Nazwa użytkownika nie może być pusta.");
+        }
+
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             throw new BadCredentialsException("Ta nazwa użytkownika jest już zajęta.");
         }
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        if (user.getRole() == null || user.getRole().isEmpty()) {
+            user.setRole("User");
+        }
+
         return userServiceImplementation.save(user);
     }
 

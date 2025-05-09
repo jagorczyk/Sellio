@@ -5,7 +5,7 @@ import {AuthorizationComponent} from '../authorization/authorization.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NavigationComponent],
   templateUrl: './app.component.html',
   standalone: true,
   styleUrl: './app.component.css'

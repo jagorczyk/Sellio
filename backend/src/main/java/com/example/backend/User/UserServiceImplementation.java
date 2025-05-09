@@ -19,17 +19,18 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<UserClass> user = userRepository.findByUsername(username);
-        if (user.isPresent()) {
-            var userObject = user.get();
-            return User.builder()
-                    .username(userObject.getUsername())
-                    .password(userObject.getPassword())
-                    .roles(userObject.getRole())
-                    .build();
-        } else {
-            throw new UsernameNotFoundException(username);
+        if (user.isEmpty()) {
+            throw new UsernameNotFoundException("User '" + username + "' not found");
         }
+
+        var userObject = user.get();
+        return User.builder()
+                .username(userObject.getUsername())
+                .password(userObject.getPassword())
+                .roles(userObject.getRole())
+                .build();
     }
+
 
     @Override
     public UserClass save(UserClass user) {

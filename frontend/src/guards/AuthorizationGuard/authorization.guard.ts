@@ -9,17 +9,14 @@ export const authorizationGuard: CanActivateFn = (route, state) => {
 
   return AuthService.isTokenValid(AuthService.getToken()).pipe(
     map(tokenValidity => {
-      console.log(tokenValidity)
       if (state.url === "/authorization") {
         if (tokenValidity) {
           return router.createUrlTree(["/navigation"]);
         } else {
           return true;
         }
-      } else {
-        if (tokenValidity) { return true; }
-        return router.createUrlTree(["/authorization"]);
       }
+      return true;
     })
   )
 };

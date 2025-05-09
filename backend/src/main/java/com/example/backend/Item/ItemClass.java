@@ -17,4 +17,6 @@ public class ItemClass {
 
     private String name;
     private String img_url;
+    private int price;
+    private int quantity;
 }

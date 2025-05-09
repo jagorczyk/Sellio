@@ -1,12 +1,35 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="navbar">
-
-  <img src="/images/logo_sellio.png">
-
-  <button class="navbar-button navbar-button-login">
-    <i class="fa fa-shopping-cart"></i>
-    Koszyk (0)
-  </button>
-
+<div class="navbar-container">
+  <div class="navbar-logo"><img src="images/logo.png" width="360px" height="64px"></div>
+  <div class="navbar-search">
+    <input type="text" placeholder="Szukaj...">
+    <i class="fa fa-search"></i>
+  </div>
+  <div class="navbar-authorization">
+    <img src="images/user.png">
+    <div class="navbar-authorization-dropdown">
+      <span>{{this.username || "Zaloguj się"}}</span>
+      @if (this.role == "[ROLE_Admin]") {
+        <br>
+        <span style="color: darkred; font-size: 1.2rem;">Administrator</span>
+      }
+      <div class="navbar-authorization-dropdown-content">
+        @if (this.AuthService.getToken() != null) {
+          <a href="#">Profil</a>
+          <a (click)="this.AuthService.removeToken()" routerLink="/authorization">Wyloguj</a>
+        } @else {
+          <a href="#">Logowanie</a>
+          <a href="#">Rejestracja</a>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="navbar-cart">
+    <img src="images/basket.png">
+    <div class="navbar-cart-container">
+      <span>Koszyk</span>
+      <span class="navbar-cart-badge">3</span>
+    </div>
+  </div>
 </div>

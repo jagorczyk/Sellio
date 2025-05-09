@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #E0E0E0;
+  --secondary-color: #F5F5F5;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,4 +13,7 @@
 html, body {
   height: 100%;
   width: 100%;
+  background: #E0E0E0;
+  font-family: 'Roboto', sans-serif;
 }
+

@@ -42,6 +42,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(registry -> {
                     registry.requestMatchers("/authentication/**").permitAll();
                     registry.requestMatchers("/items").permitAll();
+                    registry.requestMatchers("/items/info").permitAll();
+                    registry.requestMatchers("/items/info/**").permitAll();
                     registry.anyRequest().authenticated();
                 })
                 .formLogin(AbstractHttpConfigurer::disable)
